@@ -139,6 +139,12 @@ public class Main {
                 System.out.println("(9) If you accidentally sacrifice your King battle card, or lose");
                 System.out.println("your King, Queen, and Jack health cards, you lose.");
                 System.out.println("_____________________________________________________________");
+                System.out.println();
+                System.out.println("Type [1] when you are finished reading.");
+                int finished=keyboard.nextInt();
+                while(finished!=1){
+                    finished=keyboard.nextInt();
+                }
                 mainGame(spades, clubs, hearts, diamonds, chosenCard, healthCounter);
             default:
                 mainGame(spades, clubs, hearts, diamonds, chosenCard, healthCounter);
