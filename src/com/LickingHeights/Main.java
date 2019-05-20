@@ -141,9 +141,9 @@ public class Main {
                 System.out.println("_____________________________________________________________");
                 System.out.println();
                 System.out.println("Type [1] when you are finished reading.");
-                int finished=keyboard.nextInt();
-                while(finished!=1){
-                    finished=keyboard.nextInt();
+                int finished = keyboard.nextInt();
+                while (finished != 1) {
+                    finished = keyboard.nextInt();
                 }
                 mainGame(spades, clubs, hearts, diamonds, chosenCard, healthCounter);
             default:
@@ -256,6 +256,9 @@ public class Main {
             return true;
         } else if ((clubs[10] && clubs[11] && clubs[12]) || spades[12]) {
             System.out.println("You lost!");
+            if (clubs[10] && clubs[11] && clubs[12]) {
+                System.out.println("All your Royalty health cards were taken!");
+            }
             return true;
         } else {
             return false;
