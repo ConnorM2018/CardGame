@@ -47,7 +47,7 @@ public class Main {
             } else {
                 chosenCard[2] = cardSelector(clubs);
                 System.out.println("Your opponent took one of your health cards.");
-                clubs[chosenCard[3]] = true;
+                clubs[chosenCard[2]] = true;
                 healthCounter[0] = (healthCounter[0] - 1);
             }
         } else if (chosenCard[0] > chosenCard[1]) {
