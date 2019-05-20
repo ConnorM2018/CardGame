@@ -77,10 +77,10 @@ public class Main {
                 healthCounter[1] = (healthCounter[1] - 1);
             }
         }
-        System.out.println("______________________________________________________________________________");
+        System.out.println("_______________________________________________________");
         System.out.println("Health Cards left: " + healthCounter[0] + " | Opponent Health Cards left: " + healthCounter[1]);
         System.out.println(royaltyCounter(hearts));
-        System.out.println("______________________________________________________________________________");
+        System.out.println("_______________________________________________________");
         if (gameEnd(hearts, clubs, spades, diamonds)) {
             playAgain();
         } else {
@@ -267,10 +267,18 @@ public class Main {
 
     public static boolean enemyChoice(int health) {
         int number = (int) (Math.random() * 100);
+        int probability;
+        if (health > 9) {
+            probability = 5;
+        } else if (health > 5) {
+            probability = 3;
+        } else {
+            probability = 2;
+        }
         if (health == 13) {
             return false;
         } else {
-            while (number > 2) {
+            while (number > probability) {
                 number = (int) (Math.random() * 100);
             }
             return (number == 1);
