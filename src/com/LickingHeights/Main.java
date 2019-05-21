@@ -46,9 +46,17 @@ public class Main {
                 }
             } else {
                 chosenCard[2] = cardSelector(clubs);
-                System.out.println("Your opponent took one of your health cards.");
                 clubs[chosenCard[2]] = true;
                 healthCounter[0] = (healthCounter[0] - 1);
+                if (chosenCard[2] == 0) {
+                    clubs[aceTaken(clubs)] == false;
+                    clubs[aceTaken(clubs)] == false;
+                    System.out.println("Your opponent took your ACE health card!");
+                    System.out.println("You recovered two of your health cards!");
+                } else {
+                    System.out.println("Your opponent took one of your health cards.");
+                }
+                
             }
         } else if (chosenCard[0] > chosenCard[1]) {
             sacrifice[0] = choiceSpeaker(healthCounter[0]);
@@ -72,9 +80,16 @@ public class Main {
                 }
             } else {
                 chosenCard[3] = cardSelector(hearts);
-                System.out.println("You took your opponent's " + cardIdentity(chosenCard[3]) + " health card.");
                 hearts[chosenCard[3]] = true;
                 healthCounter[1] = (healthCounter[1] - 1);
+                if (chosenCard[3] == 0) {
+                    hearts[aceTaken(hearts)] == false;
+                    hearts[aceTaken(hearts)] == false;
+                    System.out.println("You accidentally took your opponent's ACE health card!");
+                    System.out.println("Your opponent recovered two of their health cards!");
+                } else {
+                    System.out.println("You took your opponent's " + cardIdentity(chosenCard[3]) + " health card.");
+                }
             }
         }
         System.out.println("_______________________________________________________");
@@ -135,8 +150,10 @@ public class Main {
                 System.out.println("the side, and cannot be recovered during the game.");
                 System.out.println("(7) If somebody sacrifices their Ace battle card, they recover");
                 System.out.println("all of their lost health cards.");
-                System.out.println("(8) This process repeats until somebody loses.");
-                System.out.println("(9) If you accidentally sacrifice your King battle card, or lose");
+                System.out.println("(8) If someone's Ace health card is taken, they recover their last");
+                System.out.println("two taken health cards.");
+                System.out.println("(9) This process repeats until somebody loses.");
+                System.out.println("(10) If you accidentally sacrifice your King battle card, or lose");
                 System.out.println("your King, Queen, and Jack health cards, you lose.");
                 System.out.println("_____________________________________________________________");
                 System.out.println();
@@ -282,6 +299,13 @@ public class Main {
                 number = (int) (Math.random() * 100);
             }
             return (number == 1);
+        }
+        public static int aceTaken(boolean[] cards){
+            int number = (int) (Math.random() * 100);
+            while (number == 0 || !cards[number]) {
+                number = (int) (Math.random() * 100);
+            }
+            return number;
         }
     }
 }
