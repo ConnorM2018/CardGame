@@ -49,15 +49,15 @@ public class Main {
                 clubs[chosenCard[2]] = true;
                 healthCounter[0] = (healthCounter[0] - 1);
                 if (chosenCard[2] == 0 && healthCounter[0] < 11) {
-                    clubs[aceTaken(clubs)] == false;
-                    clubs[aceTaken(clubs)] == false;
+                    clubs[aceTaken(clubs)] = false;
+                    clubs[aceTaken(clubs)] = false;
                     System.out.println("Your opponent took your ACE health card!");
                     System.out.println("You recovered two of your health cards!");
                     healthCounter[0] = (healthCounter[0] + 2);
                 } else {
                     System.out.println("Your opponent took one of your health cards.");
                 }
-                
+
             }
         } else if (chosenCard[0] > chosenCard[1]) {
             sacrifice[0] = choiceSpeaker(healthCounter[0]);
@@ -83,9 +83,9 @@ public class Main {
                 chosenCard[3] = cardSelector(hearts);
                 hearts[chosenCard[3]] = true;
                 healthCounter[1] = (healthCounter[1] - 1);
-                if (chosenCard[3] == 0 &&  healthCounter[1] < 11) {
-                    hearts[aceTaken(hearts)] == false;
-                    hearts[aceTaken(hearts)] == false;
+                if (chosenCard[3] == 0 && healthCounter[1] < 11) {
+                    hearts[aceTaken(hearts)] = false;
+                    hearts[aceTaken(hearts)] = false;
                     System.out.println("You accidentally took your opponent's ACE health card!");
                     System.out.println("Your opponent recovered two of their health cards!");
                     healthCounter[1] = (healthCounter[1] + 2);
@@ -154,7 +154,7 @@ public class Main {
                 System.out.println("all of their lost health cards.");
                 System.out.println("(8) If someone's Ace health card is taken, they recover their last");
                 System.out.println("two taken health cards. However, if less than 2 of their health cards");
-                System.out.println("have been taken, then they do not recover any health cards at all.);
+                System.out.println("have been taken, then they do not recover any health cards at all.");
                 System.out.println("(9) This process repeats until somebody loses.");
                 System.out.println("(10) If you accidentally sacrifice your King battle card, or lose");
                 System.out.println("your King, Queen, and Jack health cards, you lose.");
@@ -303,12 +303,12 @@ public class Main {
             }
             return (number == 1);
         }
-        public static int aceTaken(boolean[] cards){
-            int number = (int) (Math.random() * 100);
-            while (number == 0 || !cards[number]) {
-                number = (int) (Math.random() * 100);
-            }
-            return number;
+    }
+    public static int aceTaken (boolean[] cards){
+        int number = (int) (Math.random() * 100);
+        while (number == 0 || !cards[number] || number > 12) {
+            number = (int) (Math.random() * 100);
         }
+        return number;
     }
 }
